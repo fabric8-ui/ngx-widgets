@@ -22,8 +22,8 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
-# Results directory for tests
-test-results
+# Results tests
+test-results.xml
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt

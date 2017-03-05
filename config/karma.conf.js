@@ -62,7 +62,8 @@ module.exports = function(config) {
 
     // the default configuration
     junitReporter: {
-      outputDir: 'test-results', // results will be saved as $outputDir/$browserName.xml
+      outputFile: 'test-results.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
+      useBrowserName: false, // add browser name to report and classes names
     },
 
     // web server port
