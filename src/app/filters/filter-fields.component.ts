@@ -50,30 +50,32 @@ export class FilterFieldsComponent implements OnInit {
   }
 
   setupConfig(): void {
-    this.prevConfig = _.cloneDeep(this.config);
+    if (this.config.fields.length) {
+      this.prevConfig = _.cloneDeep(this.config);
 
-    if (this.config && this.config.fields === undefined) {
-      this.config.fields = [];
-    }
-    if (this.config && this.config.tooltipPlacement === undefined) {
-      this.config.tooltipPlacement = "top";
-    }
+      if (this.config && this.config.fields === undefined) {
+        this.config.fields = [];
+      }
+      if (this.config && this.config.tooltipPlacement === undefined) {
+        this.config.tooltipPlacement = "top";
+      }
 
-    let fieldFound: boolean = false;
-    if (this.currentField !== undefined) {
-      _.find(this.config.fields, (nextField) => {
-        if (nextField.id === this.currentField.id) {
-          fieldFound = true;
-          return;
-        }
-      });
-    }
-    if (!fieldFound) {
-      this.currentField = this.config.fields[0];
-      this.currentValue = null;
-    }
-    if (this.currentValue === undefined) {
-      this.currentValue = null;
+      let fieldFound: boolean = false;
+      if (this.currentField !== undefined) {
+        _.find(this.config.fields, (nextField) => {
+          if (nextField.id === this.currentField.id) {
+            fieldFound = true;
+            return;
+          }
+        });
+      }
+      if (!fieldFound) {
+        this.currentField = this.config.fields[0];
+        this.currentValue = null;
+      }
+      if (this.currentValue === undefined) {
+        this.currentValue = null;
+      }
     }
   }
 

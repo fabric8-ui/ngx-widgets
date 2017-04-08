@@ -3,7 +3,7 @@
     <div class="input-group-btn" dropdown>
       <button type="button" class="btn btn-default filter-fields dropdown-toggle" dropdownToggle
               tooltip="Filter by" placement="{{config.tooltipPlacement}}">
-        {{currentField.title}}
+        {{currentField?.title}}
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu" dropdownMenu>
@@ -14,21 +14,21 @@
         </li>
       </ul>
     </div>
-    <div *ngIf="currentField.type !== 'select'">
-      <input class="form-control" type="{{currentField.type}}" [(ngModel)]="currentValue"
-             placeholder="{{currentField.placeholder}}"
+    <div *ngIf="currentField?.type !== 'select'">
+      <input class="form-control" type="{{currentField?.type}}" [(ngModel)]="currentValue"
+             placeholder="{{currentField?.placeholder}}"
              (keypress)="onValueKeyPress($event)"/>
     </div>
-    <div *ngIf="currentField.type === 'select'">
+    <div *ngIf="currentField?.type === 'select'">
       <div class="btn-group bootstrap-select form-control filter-select" dropdown>
         <button type="button" class="btn btn-default dropdown-toggle" dropdownToggle>
           <span class="filter-option pull-left">{{currentValue || currentField.placeholder}}</span>
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu" role="menu" dropdownMenu>
-          <li *ngIf="currentField.placeholder">
+          <li *ngIf="currentField?.placeholder">
             <a role="menuitem" tabindex="-1" (click)="selectValue()">
-              {{currentField.placeholder}}
+              {{currentField?.placeholder}}
             </a>
           </li>
           <li *ngFor="let query of currentField.queries"
