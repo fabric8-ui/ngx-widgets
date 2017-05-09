@@ -12,6 +12,7 @@
     "bundle": "webpack --config config/webpack.prod.js --progress --profile --bail",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist distwatch bundles",
     "cleanup": "rimraf dist/package.json dist/bundles dist/src dist/index.d.ts dist/index.metadata.json dist/index.js dist/index.js.map dist/LICENSE dist/README.md",
+    "component-lab": "component-lab",
     "minify": "uglifyjs dist/bundles/ngx-widgets.js --screw-ie8 --compress --mangle --comments --output dist/bundles/ngx-widgets.min.js",
     "reinstall": "npm run clean && npm install",
     "remove-dist": "rimraf dist dist-watch",
@@ -81,6 +82,7 @@
   "peerDependencies": {
   },
   "devDependencies": {
+    "@angular/cli": "1.0.1",
     "@angular/compiler": "4.0.1",
     "@angular/compiler-cli": "4.0.1",
     "@angular/http": "4.0.1",
@@ -100,6 +102,7 @@
     "clean-css": "4.0.10",
     "clean-webpack-plugin": "0.1.16",
     "codelyzer": "3.0.0-beta.4",
+    "component-lab": "0.1.0-alpha.1",
     "copy-webpack-plugin": "4.0.1",
     "copyfiles": "1.2.0",
     "core-js": "2.4.1",
