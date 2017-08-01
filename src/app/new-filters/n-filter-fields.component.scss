@@ -1,0 +1,84 @@
+@import '../../assets/stylesheets/_base';
+
+.ng-filter-bar {
+  position: relative;
+  .ng-filter-icon {
+    padding: 5px 7px;
+    color: #4d5258;
+    border: 1px solid;
+    border-color: #bbb;
+    border-bottom: 0;
+  }
+  .ng-filter-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    float: left;
+    min-width: 176px;
+    .filter-search {
+      display: inline-block;
+      width: 100%;
+      border: 1px solid;
+      border-color: #bbb;
+      input[type="text"] {
+        border: 0;
+        padding-right: 30px;
+      }
+      i.fa-close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+    }
+    .list-wrapper {
+      position: relative;
+      left: 0;
+      right: 0;
+      .ng-filter-list-primary {
+        position: inherit;
+        top: -1px;
+        bottom: 0;
+        margin: 0;
+        box-shadow: none;
+      }
+      &:hover .ng-filter-list-sec {
+        display: block;
+        animation: fadeIn 0.5s;
+      }
+      .ng-filter-list-sec {
+        position: inherit;
+        //display: block;
+        top: -1px;
+        margin: 0;
+        margin-left: -1px;
+        overflow: scroll;
+        box-shadow: none;
+      }
+    }
+  }
+  .filter-list-right {
+    position: relative !important;
+    right: 0;
+    left: auto;
+    float: right !important;
+    .list-wrapper {
+      right: 0;
+      .ng-filter-list-primary {
+        right: 0;
+        float: right !important;
+      }
+      .ng-filter-list-sec {
+        margin-left: 0;
+        margin-right: -1px;
+      }
+    }
+  }
+}
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}

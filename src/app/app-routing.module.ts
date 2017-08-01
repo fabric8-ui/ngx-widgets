@@ -5,6 +5,7 @@ import { EmptyStateExampleComponent } from './emptystate/examples/emptystate-exa
 import { FilterExampleComponent } from './filters/examples/filter-example.component';
 import { HomeComponent } from './home/home.component';
 import { ListViewExampleComponent } from './listview/examples/listview-example.component';
+import { NewFilterExampleComponent } from './new-filters/examples/n-filter-example.component';
 import { RemainingCharsExampleComponent } from './remainingchars/examples/remainingchars-example.component';
 import { SlideOutExampleComponent } from './slide-out-panel/examples/slide-out-example.component';
 import { SortExampleComponent } from './sort/examples/sort-example.component';
@@ -29,6 +30,9 @@ const routes: Routes = [{
   },{
     path: 'listview',
     component: ListViewExampleComponent
+  },{
+    path: 'new-filter',
+    component: NewFilterExampleComponent
   },{
     path: 'remainingchars',
     component: RemainingCharsExampleComponent

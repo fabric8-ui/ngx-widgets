@@ -17,6 +17,7 @@ import { EmptyStateExampleModule } from './emptystate/examples/emptystate-exampl
 import { FilterExampleModule } from './filters/examples/filter-example.module';
 import { HomeModule } from './home/home.module';
 import { ListViewExampleModule } from './listview/examples/listview-example.module';
+import { NewFilterExampleModule } from './new-filters/examples/n-filter-example.module';
 import { RemainingCharsExampleModule } from './remainingchars/examples/remainingchars-example.module';
 import { SlideOutExampleModule } from './slide-out-panel/examples/slide-out-example.module';
 import { SortExampleModule } from './sort/examples/sort-example.module';
@@ -36,6 +37,7 @@ import { TreeListExampleModule } from './treelist/examples/treelist-example.modu
     HomeModule,
     HttpModule,
     ListViewExampleModule,
+    NewFilterExampleModule,
     NotificationExampleModule,
     RemainingCharsExampleModule,
     SortExampleModule,
