@@ -1,0 +1,33 @@
+<div class="ng-filter-bar">
+  <a class="ng-filter-icon dib" (click)="openFilterList">
+    <i class="fa fa-filter fa-lg"></i>
+  </a>
+  <div class="ng-filter-list filter-listright">
+    <div class="filter-search">
+      <input type="text" class="form-control">
+      <a>
+        <i class="fa fa-lg fa-close"></i>
+      </a>
+    </div>
+    <div class="list-wrapper" dropdown>
+      <ul class="dropdown-menu ng-filter-list-primary show" role="menu" dropdownMenu>
+        <li *ngFor="let field of config.fields">
+          <a class="filter-field dropdown-item" role="menuitem" tabindex="-1" (mouseover)="selectField(field)">
+            <span class="text">{{field.title}}</span>
+            <i class="fa fa-angle-right pull-right"></i>
+          </a>
+        </li>
+      </ul>
+      <ul class="dropdown-menu ng-filter-list-sec" style="max-height:180px;">
+        <li *ngFor="let query of currentField.queries"
+            [ngClass]="{'selected': query.value === currentValue}">
+          <a role="menuitem" tabindex="-1" (click)="selectValue(query)">
+            <span *ngIf="query?.iconClass" class="fa {{query?.iconClass}}"></span>
+            <img class="avatar" *ngIf="query?.imageUrl" [attr.src]="query?.imageUrl" />
+            {{query.value}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
