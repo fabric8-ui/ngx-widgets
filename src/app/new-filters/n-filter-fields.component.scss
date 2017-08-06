@@ -4,9 +4,9 @@
   position: relative;
   .ng-filter-icon {
     padding: 5px 7px;
-    color: #4d5258;
+    color: $color-pf-black-700;
     border: 1px solid;
-    border-color: #bbb;
+    border-color: $color-pf-black-400;
     border-bottom: 0;
   }
   .ng-filter-list {
@@ -19,7 +19,7 @@
       display: inline-block;
       width: 100%;
       border: 1px solid;
-      border-color: #bbb;
+      border-color: $color-pf-black-400;
       input[type="text"] {
         border: 0;
         padding-right: 30px;
@@ -34,6 +34,9 @@
       position: relative;
       left: 0;
       right: 0;
+      .dropdown-menu {
+        min-width: 176px;
+      }
       .ng-filter-list-primary {
         position: inherit;
         top: -1px;
@@ -47,7 +50,6 @@
       }
       .ng-filter-list-sec {
         position: inherit;
-        //display: block;
         top: -1px;
         margin: 0;
         margin-left: -1px;
@@ -57,15 +59,15 @@
     }
   }
   .filter-list-right {
-    position: relative !important;
+    position: relative ;
     right: 0;
     left: auto;
-    float: right !important;
+    float: right ;
     .list-wrapper {
       right: 0;
       .ng-filter-list-primary {
         right: 0;
-        float: right !important;
+        float: right ;
       }
       .ng-filter-list-sec {
         margin-left: 0;
