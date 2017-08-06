@@ -6,12 +6,18 @@
       <ul class="list-inline">
         <li *ngFor="let filter of config.appliedFilters">
           <span class="active-filter label label-info">
-            {{filter.field.title}}: {{filter.value}}
-            <a><span class="pficon pficon-close" (click)="clearFilter(filter)"></span></a>
-          </span>
+            {{filter.field.title}}: {{filter.value}}</span>
+            <a (click)="clearFilter(filter)">
+              <span class="pficon pficon-close"></span>
+            </a>
         </li>
       </ul>
-      <p><a class="clear-filters" (click)="clearAllFilters()" *ngIf="config.appliedFilters.length > 0">Clear All Filters</a></p>
+      <p>
+        <a class="clear-filters"
+          (click)="clearAllFilters()"
+          *ngIf="config.appliedFilters.length > 0">Clear All Filters
+        </a>
+      </p>
       <div *ngIf="config.totalCount !== 0" class="pf-table-view-selected-label">
         <strong>{{config.selectedCount}}</strong> of <strong>{{config.totalCount}}</strong> selected
       </div>
