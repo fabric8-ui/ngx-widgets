@@ -24,8 +24,8 @@ export { View } from './src/app/config/view';
 export { ViewsConfig } from './src/app/config/views-config';
 
 // Inline Input module
-import { InlineInputComponent } from './src/app/inlineinput/inlineinput.component';
-import { InlineInputModule } from './src/app/inlineinput/inlineinput.mdoule';
+export { InlineInputComponent } from './src/app/inlineinput/inlineinput.component';
+export { InlineInputModule } from './src/app/inlineinput/inlineinput.mdoule';
 
 // Markdown module
 export { MarkdownComponent } from './src/app/markdown/markdown.component';
