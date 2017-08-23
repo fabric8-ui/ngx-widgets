@@ -1,0 +1,38 @@
+<div class="padding-15 container">
+  <h2> Inline input component example </h2>
+  <hr/>
+  <label>Normal field</label>
+  <br/>
+  <small>Normal editing</small>
+  <f8-inlineinput
+    [value]="'This is some value'"
+    (onSave)="saveTitle($event)">
+  </f8-inlineinput>
+  <hr/>
+  <label>Diabled field</label>
+  <br/>
+  <small>Disable editing</small>
+  <f8-inlineinput
+    [value]="'This is some value'"
+    [disabled]="true"
+    (onSave)="saveTitle($event)">
+  </f8-inlineinput>
+  <hr/>
+  <label>No onclick edit field</label>
+  <br/>
+  <small>To start editing you have to click on the edit icon. Clicking on the text will not work</small>
+  <f8-inlineinput
+    [value]="'This is some value'"
+    [onLineClickEdit]="false"
+    (onSave)="saveTitle($event)">
+  </f8-inlineinput>
+  <hr/>
+  <label>OnSave error</label>
+  <br/>
+  <small>This is a simulation of showing error</small>
+  <f8-inlineinput
+    [value]="'This is some value'"
+    [onLineClickEdit]="false"
+    (onSave)="saveTitleError($event)">
+  </f8-inlineinput>
+</div>

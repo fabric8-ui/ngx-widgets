@@ -1,0 +1,34 @@
+<div class="inlineinput-container"
+  [class.read-only]="readOnly">
+  <textarea
+    #input
+    autosize
+    (click)="startEditing($event, true)"
+    [init_height]="40"
+    [attr.disabled]="(!onLineClickEdit || readOnly) && !editing ? '' : null"
+    [attr.placeholder]="placeholder"
+    [class.active]="editing"
+    [value]="inpvalue"
+    class="input-field">
+  </textarea>
+  <div class="editor-icon-container">
+    <i (click)="startEditing($event, false)"
+      class="pficon-edit edit-icon"></i>
+  </div>
+  <div class="actions" *ngIf="editing">
+    <div
+      (click)="closeClick()"
+      class="fl btn btn-primary pull-right action-btn">
+      <i class="fa fa-close"></i>
+    </div>
+    <div
+      (click)="saveClick()"
+      class="fl btn btn-primary pull-right action-btn btn-save"
+      [class.disabled]="saving">
+      <i class="fa fa-check"></i>
+    </div>
+    <div class="pull-right error-message" *ngIf="errorMessage.length">
+      <small>{{errorMessage}}</small>
+    </div>
+  </div>
+</div>

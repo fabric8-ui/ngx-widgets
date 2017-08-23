@@ -1,0 +1,62 @@
+@import "../../assets/stylesheets/_base";
+
+.inlineinput-container {
+  width: 100%;
+  .input-field {
+    border: 1px solid $color-pf-white;
+    font-size: 20px;
+    height: 40px;
+    outline: none;
+    padding: 0px 10px;
+    resize: none;
+    width: 95%;
+    &:focus {
+      border: 1px solid $color-pf-blue-400 !important;
+    }
+  }
+  .active {
+    border: 1px solid $color-pf-blue-400 !important;
+  }
+
+  .editor-icon-container {
+    display: inline;
+    position: absolute;
+    margin: 12px 10px;
+    cursor: pointer;
+    .edit-icon {
+      opacity: 0
+    }
+  }
+
+  .actions {
+    margin-top: 10px;
+    width: 95%;
+    .action-btn { width: 40px; }
+    .btn-save { margin-right: 10px; }
+    .clickable { cursor: pointer }
+    .error-message {
+      color: $color-pf-red;
+      margin-right: 10px;
+    }
+  }
+
+  &:hover {
+    .input-field {
+      border: 1px solid $color-pf-black-200;
+    }
+    .edit-icon {
+      opacity: 1;
+    }
+  }
+
+  &.read-only {
+    &:hover {
+      .input-field {
+        border: 1px solid $color-pf-white;
+      }
+      .edit-icon {
+        opacity: 0;
+      }
+    }
+  }
+}
