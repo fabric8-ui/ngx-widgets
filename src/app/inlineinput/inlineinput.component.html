@@ -29,8 +29,8 @@
     <i (click)="startEditing($event, false)"
       class="pficon-edit edit-icon"></i>
   </div>
-  <div class="actions" *ngIf="editing">
-    <div class="pull-right error-message" *ngIf="errorMessage.length">
+  <div *ngIf="editing">
+    <div class="error-message" *ngIf="errorMessage.length">
       <small>{{errorMessage}}</small>
     </div>
   </div>

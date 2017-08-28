@@ -38,13 +38,8 @@
     }
   }
 
-  .actions {
-    margin-top: 10px;
-    width: 100%;
-    .error-message {
-      color: $color-pf-red;
-      margin-right: 10px;
-    }
+  .error-message {
+    color: $color-pf-red;
   }
 
   &:hover {
