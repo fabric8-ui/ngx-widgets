@@ -11,33 +11,36 @@
     outline: none;
     padding: 0px 10px;
     resize: none;
-    width: 95%;
+    width: calc(100% - 100px);
     &:focus {
       border: 1px solid $color-pf-blue-400 !important;
       background-color: $color-pf-white;
     }
   }
+
+  .action-btn {
+    min-width: 40px;
+    vertical-align: top;
+  }
+
   .active {
     border: 1px solid $color-pf-blue-400 !important;
     background-color: $color-pf-white;
   }
 
   .editor-icon-container {
-    display: inline;
-    position: absolute;
-    margin: 12px 10px;
+    display: inline-block;
+    margin: 5px 5px;
+    vertical-align: top;
     cursor: pointer;
     .edit-icon {
-      opacity: 0
+      opacity: 0;
     }
   }
 
   .actions {
     margin-top: 10px;
-    width: 95%;
-    .action-btn { width: 40px; }
-    .btn-save { margin-right: 10px; }
-    .clickable { cursor: pointer }
+    width: 100%;
     .error-message {
       color: $color-pf-red;
       margin-right: 10px;
