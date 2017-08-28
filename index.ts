@@ -23,6 +23,10 @@ export { ActionsConfig } from './src/app/config/actions-config';
 export { View } from './src/app/config/view';
 export { ViewsConfig } from './src/app/config/views-config';
 
+// Inline Input module
+export { InlineInputComponent } from './src/app/inlineinput/inlineinput.component';
+export { InlineInputModule } from './src/app/inlineinput/inlineinput.mdoule';
+
 // Markdown module
 export { MarkdownComponent } from './src/app/markdown/markdown.component';
 export { MarkdownModule } from './src/app/markdown/markdown.mdoule';
