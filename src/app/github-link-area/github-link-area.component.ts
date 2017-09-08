@@ -45,10 +45,10 @@ export class GitHubLinkAreaComponent implements OnChanges {
    */
   replaceLink(linkData: any): void {
     this.content = this.content.split(linkData.match).join(
-      (linkData.state === 'open' ? '<span class="gh-link-open fa fa-clock-o"></span>' : '') +
-      (linkData.state === 'closed' ? '<span class="gh-link-closed fa fa-check"></span>' : '') +
+      (linkData.state === 'open' ? '<span class="fa fa-clock-o gh-link-open"></span>' : '') +
+      (linkData.state === 'closed' ? '<span class="fa fa-check gh-link-closed"></span>' : '') +
       ((linkData.state !== 'open' && linkData.state !== 'closed') ?
-        '<span class="gh-link-error fa pficon-warning-triangle-o"></span>' : '')
+        '<span class="fa pficon-warning-triangle-o gh-link-error"></span>' : '')
     );
   }
 
@@ -56,13 +56,13 @@ export class GitHubLinkAreaComponent implements OnChanges {
    * This does a preliminary synchonous replacement of the original html link with
    * a formatted version and an "unknown status" icon. This first step is needed to
    * not "flash" the original links in the field before updating the icons. In the
-   * next step (in updateLinks()), the "unknown status" icon is replaced with the 
+   * next step (in updateLinks()), the "unknown status" icon is replaced with the
    * actual status icon.
    */
   updateLinkTexts(): void {
     // the following regexp only matches a specific way of links, namely links with no
     // additional classes etc.; if a markdown compiler (or some other content source)
-    // creates different links to GitHub, this regexp needs to be extended to match 
+    // creates different links to GitHub, this regexp needs to be extended to match
     // those formats.
     let regexp: RegExp = new RegExp(
       '<a href="https:\/\/github.com\/([^\/]+)\/([^\/]+)\/issues\/([^"]+)">([^<]+)<\/a>', 'gi'
@@ -73,13 +73,13 @@ export class GitHubLinkAreaComponent implements OnChanges {
         result[1] + '/' +
         result[2] + '/' +
         '/issues/' + result[3] + '">' +
-        '<span class="gh-link-system fa fa-github"></span><span class="gh-link-label"> ' +
+        '<span class="fa fa-github gh-link-system"></span><span class="gh-link-label"> ' +
         result[2] + ':' + result[3] + ' ' +
         '<span ' +
           'data-gh-org="' + result[1] + '" ' +
           'data-gh-repo="' + result[2] + '" ' +
           'data-gh-issue="' + result[3] + '" ' +
-        'class="gh-link-error fa pficon-warning-triangle-o"></span>' +
+        'class="fa pficon-warning-triangle-o gh-link-error"></span>' +
         '</a>');
       result = regexp.exec(this.content);
     }
@@ -93,7 +93,7 @@ export class GitHubLinkAreaComponent implements OnChanges {
   updateLinks(): void {
     let regexp: RegExp = new RegExp(
       // tslint:disable-next-line:max-line-length
-      '<span data-gh-org="([^"]+)" data-gh-repo="([^"]+)" data-gh-issue="([^"]+)" class="gh-link-error fa pficon-warning-triangle-o"></span>', 'gi'
+      '<span data-gh-org="([^"]+)" data-gh-repo="([^"]+)" data-gh-issue="([^"]+)" class="fa pficon-warning-triangle-o gh-link-error"></span>', 'gi'
     );
     let result = regexp.exec(this.content);
     while (result) {

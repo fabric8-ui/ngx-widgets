@@ -7,13 +7,11 @@ import {
   selector: 'github-link-example',
   styles: [`
     .sample-form .form-horizontal .form-group {
-      margin-left: 0px;
+      margin-left: 0;
     }
-    
     .padding-top-15 {
       padding-top: 15px;
     }
-    
     .padding-bottom-15 {
       padding-bottom: 15px;
     }
