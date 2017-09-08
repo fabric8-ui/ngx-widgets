@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MarkdownComponent } from './markdown.component';
 import { AlmEditableModule } from './../editable/almeditable.module';
 import { GitHubLinkModule } from './../github-link/github-link.module';
+import { GitHubLinkAreaModule } from './../github-link-area/github-link-area.module';
 
 @NgModule({
   declarations: [ MarkdownComponent ],
-  imports: [ CommonModule, AlmEditableModule, GitHubLinkModule ],
+  imports: [ CommonModule, AlmEditableModule, GitHubLinkAreaModule ],
   exports: [ MarkdownComponent ]
 })
 export class MarkdownModule { }

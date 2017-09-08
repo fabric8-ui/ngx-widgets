@@ -6,10 +6,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 
-import { 
-  HttpClient 
-} from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { GitHubLinkService } from './../github-link-area/github-link.service';
 
 /**
  * GitHub Link component. This shows a formatted link to GitHub with an
@@ -20,7 +17,6 @@ import { Observable } from "rxjs/Observable";
   encapsulation: ViewEncapsulation.None,
   selector: 'github-link',
   styles: [ `
-    .gh-link-hidden { display: none; }
     .gh-link-open { color: red; }
     .gh-link-closed { color: green; }
     .gh-link-error { color: orange; }
@@ -44,6 +40,8 @@ export class GitHubLinkComponent implements OnChanges {
    */
   state: string = 'error';
 
+  constructor(private gitHubLinkService: GitHubLinkService) {}
+
   parseUrl(url: string): any {
     let regexp: RegExp = new RegExp('^https://github.com/(.*)/(.*)/issues/(.*)$');
     let result = regexp.exec(url);
@@ -65,21 +63,14 @@ export class GitHubLinkComponent implements OnChanges {
     if (changes && changes.url) {
       this.urlData = this.parseUrl(changes.url.currentValue);
       if (this.urlData) {
-        this.http.get('https://api.github.com/repos/' + this.urlData.org + '/' + this.urlData.repo + '/issues/' + this.urlData.issue)
-          .catch(error => {
-            return Observable.of({state: "error"});
-          })
+        this.gitHubLinkService.getIssue(this.urlData)
           .subscribe(data => {
             this.state = data['state'];
-          })
+          });
       } else {
-        this.state = "error";
+        this.state = 'error';
       }
     }
   }
 
-  /**
-   * The default constructor
-   */
-  constructor(private http: HttpClient) {}
 }

@@ -164,21 +164,9 @@ export class MarkdownComponent implements OnChanges, OnInit {
       console.warn('Markdown component preview callback :: renderedText is passed undefined');
       this.renderedText = '';
     } else {
-      this.renderedText = this.postProcessRenderedText(renderedText);
+      this.renderedText = renderedText;
     }
     this.viewType = 'preview';
-  }
-
-  postProcessRenderedText(renderedText: string): string {
-    console.log('#################');
-    console.log(renderedText);
-    let reS = /<a href=/gi;
-    let reE = /<\/a>/gi;
-    let newRenderedText = renderedText
-      .replace(reS, '<github-link url=')
-      .replace(reE, '</github-link>');
-    console.log(newRenderedText);
-    return newRenderedText;
   }
 
   saveUpdate(rawText: string, renderedText: string) {
@@ -193,7 +181,7 @@ export class MarkdownComponent implements OnChanges, OnInit {
       console.warn('Markdown component save callback :: renderedText is passed undefined');
       this.renderedText = '';
     } else {
-      this.renderedText = this.postProcessRenderedText(renderedText);
+      this.renderedText = renderedText;
     }
     this.deactivateEditor();
   }

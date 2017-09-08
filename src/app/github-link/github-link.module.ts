@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GitHubLinkComponent } from './github-link.component';
 
 /**
- * A module containing objects associated with the sample component
+ * A module containing objects associated with the github-link component
  */
 @NgModule({
   imports: [ CommonModule, HttpClientModule ],

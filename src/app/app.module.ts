@@ -1,4 +1,4 @@
-//import './rxjs-extensions';
+// import './rxjs-extensions';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +16,9 @@ import { MarkdownExampleModule } from './markdown/examples/markdown-example.modu
 import { SlideOutExampleModule } from './slide-out-panel/examples/slide-out-example.module';
 import { TreeListExampleModule } from './treelist/examples/treelist-example.module';
 import { GitHubLinkExampleModule } from './github-link/examples/github-link-example.module';
+import {
+  GitHubLinkAreaExampleModule
+} from './github-link-area/examples/github-link-area-example.module';
 
 @NgModule({
   imports: [
@@ -28,7 +31,8 @@ import { GitHubLinkExampleModule } from './github-link/examples/github-link-exam
     MarkdownExampleModule,
     SlideOutExampleModule,
     TreeListExampleModule,
-    GitHubLinkExampleModule
+    GitHubLinkExampleModule,
+    GitHubLinkAreaExampleModule
   ],
   declarations: [
     AppComponent
