@@ -17,9 +17,9 @@ import { GitHubLinkService } from './../github-link-area/github-link.service';
   encapsulation: ViewEncapsulation.None,
   selector: 'github-link',
   styles: [ `
-    .gh-link-open { color: red; }
-    .gh-link-closed { color: green; }
-    .gh-link-error { color: orange; }
+    .gh-link-open { color: @color-pf-red; }
+    .gh-link-closed { color: @color-pf-green; }
+    .gh-link-error { color: @color-pf-orange; }
     `],
   templateUrl: './github-link.component.html'
 })
