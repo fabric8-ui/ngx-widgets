@@ -79,7 +79,7 @@ export class GitHubLinkAreaComponent implements OnChanges {
           'data-gh-org="' + result[1] + '" ' +
           'data-gh-repo="' + result[2] + '" ' +
           'data-gh-issue="' + result[3] + '" ' +
-        'class="fa pficon-warning-triangle-o gh-link-error"></span>' +
+        'class="pficon pficon-warning-triangle-o gh-link-error"></span>' +
         '</a>');
       result = regexp.exec(this.content);
     }
@@ -93,7 +93,7 @@ export class GitHubLinkAreaComponent implements OnChanges {
   updateLinks(): void {
     let regexp: RegExp = new RegExp(
       // tslint:disable-next-line:max-line-length
-      '<span data-gh-org="([^"]+)" data-gh-repo="([^"]+)" data-gh-issue="([^"]+)" class="fa pficon-warning-triangle-o gh-link-error"></span>', 'gi'
+      '<span data-gh-org="([^"]+)" data-gh-repo="([^"]+)" data-gh-issue="([^"]+)" class="pficon pficon-warning-triangle-o gh-link-error"></span>', 'gi'
     );
     let result = regexp.exec(this.content);
     while (result) {
