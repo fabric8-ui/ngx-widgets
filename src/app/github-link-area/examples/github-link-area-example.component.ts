@@ -23,9 +23,11 @@ export class GitHubLinkAreaExampleComponent implements OnInit {
   content: string = `There is some text in here
     <a href="https://github.com/patternfly/patternfly-ng/issues/127">https://github.com/patternfly/patternfly-ng/issues/127</a>. 
     And some more text. And another issue link:
-    <a href="https://github.com/patternfly/patternfly-ng/issues/111">https://github.com/patternfly/patternfly-ng/issues/111</a>.
+    <a href="https://github.com/patternfly/patternfly-ng/issues/111" rel="nofollow">https://github.com/patternfly/patternfly-ng/issues/111</a>.
     And for testing purposes, the same link as the first as a dupe:
-    <a href="https://github.com/patternfly/patternfly-ng/issues/127">https://github.com/patternfly/patternfly-ng/issues/127</a>`;
+    <a href="https://github.com/patternfly/patternfly-ng/issues/127" rel="nofollow">https://github.com/patternfly/patternfly-ng/issues/127</a>.
+    Note: the link html formatting is following the currently used OSIO server side link markdown formatting. It may need changes
+    if used with a different markdown compiler`;
 
   constructor() {}
 

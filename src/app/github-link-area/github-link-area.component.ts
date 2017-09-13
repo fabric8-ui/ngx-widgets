@@ -65,14 +65,14 @@ export class GitHubLinkAreaComponent implements OnChanges {
     // creates different links to GitHub, this regexp needs to be extended to match
     // those formats.
     let regexp: RegExp = new RegExp(
-      '<a href="https:\/\/github.com\/([^\/]+)\/([^\/]+)\/issues\/([^"]+)">([^<]+)<\/a>', 'gi'
+      '<a href="https:\/\/github.com\/([^\/]+)\/([^\/]+)\/issues\/([^"]+)[^<]*">([^<]+)<\/a>', 'gi'
     );
     let result = regexp.exec(this.content);
     while (result) {
       this.content = this.content.split(result[0]).join('<a href="https://github.com/' +
         result[1] + '/' +
         result[2] + '/' +
-        '/issues/' + result[3] + '">' +
+        '/issues/' + result[3] + '" rel="nofollow">' +
         '<span class="fa fa-github gh-link-system"></span><span class="gh-link-label"> ' +
         result[2] + ':' + result[3] + ' ' +
         '<span ' +
