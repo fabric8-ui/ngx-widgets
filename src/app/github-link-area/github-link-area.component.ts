@@ -34,9 +34,18 @@ export class GitHubLinkAreaComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes.content) {
-      this.updateLinkTexts();
-      this.updateLinks();
+      this.updateOnChanges();
     }
+  }
+
+  /*
+   * Because Angular testing is broken, we need to be able to call
+   * this from a test. See reason here:
+   * https://github.com/angular/angular/issues/9866
+   */
+  updateOnChanges() {
+    this.updateLinkTexts();
+    this.updateLinks();
   }
 
   /*
@@ -45,10 +54,12 @@ export class GitHubLinkAreaComponent implements OnChanges {
    */
   replaceLink(linkData: any): void {
     this.content = this.content.split(linkData.match).join(
-      (linkData.state === 'open' ? '<span class="fa fa-clock-o gh-link-open"></span>' : '') +
-      (linkData.state === 'closed' ? '<span class="fa fa-check gh-link-closed"></span>' : '') +
+      // tslint:disable-next-line:max-line-length
+      (linkData.state === 'open' ? '<span class="fa fa-clock-o gh-link-open" tooltip="Issue Open"></span>' : '') +
+      (linkData.state === 'closed' ? '<span class="fa fa-check gh-link-closed tooltip="Issue Closed""></span>' : '') +
       ((linkData.state !== 'open' && linkData.state !== 'closed') ?
-        '<span class="fa pficon-warning-triangle-o gh-link-error"></span>' : '')
+      // tslint:disable-next-line:max-line-length
+      '<span class="fa pficon-warning-triangle-o gh-link-error" tooltip="Issue State Unknown"></span>' : '')
     );
   }
 
@@ -69,18 +80,19 @@ export class GitHubLinkAreaComponent implements OnChanges {
     );
     let result = regexp.exec(this.content);
     while (result) {
-      this.content = this.content.split(result[0]).join('<a href="https://github.com/' +
-        result[1] + '/' +
-        result[2] + '/' +
-        '/issues/' + result[3] + '" rel="nofollow">' +
-        '<span class="fa fa-github gh-link-system"></span><span class="gh-link-label"> ' +
-        result[2] + ':' + result[3] + ' ' +
-        '<span ' +
-          'data-gh-org="' + result[1] + '" ' +
-          'data-gh-repo="' + result[2] + '" ' +
-          'data-gh-issue="' + result[3] + '" ' +
-        'class="pficon pficon-warning-triangle-o gh-link-error"></span>' +
-        '</a>');
+      this.content = this.content.split(result[0])
+        .join('<a class="gh-link" href="https://github.com/' +
+          result[1] + '/' +
+          result[2] + '/' +
+          'issues/' + result[3] + '" rel="nofollow">' +
+          '<span class="fa fa-github gh-link-system"></span><span class="gh-link-label"> ' +
+          result[2] + ':' + result[3] + ' ' +
+          '<span ' +
+            'data-gh-org="' + result[1] + '" ' +
+            'data-gh-repo="' + result[2] + '" ' +
+            'data-gh-issue="' + result[3] + '" ' +
+          'class="pficon pficon-warning-triangle-o gh-link-error"></span>' +
+          '</a>');
       result = regexp.exec(this.content);
     }
   }
