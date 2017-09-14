@@ -5,7 +5,6 @@ import { HomeComponent } from './home/home.component';
 import { MarkdownExampleComponent } from './markdown/examples/markdown-example.component';
 import { SlideOutExampleComponent } from './slide-out-panel/examples/slide-out-example.component';
 import { TreeListExampleComponent } from './treelist/examples/treelist-example.component';
-import { GitHubLinkExampleComponent } from './github-link/examples/github-link-example.component';
 import {
   GitHubLinkAreaExampleComponent
 } from './github-link-area/examples/github-link-area-example.component';
@@ -26,9 +25,6 @@ const routes: Routes = [{
   }, {
     path: 'markdown',
     component: MarkdownExampleComponent
-  }, {
-    path: 'github-link',
-    component: GitHubLinkExampleComponent
   }, {
     path: 'github-link-area',
     component: GitHubLinkAreaExampleComponent

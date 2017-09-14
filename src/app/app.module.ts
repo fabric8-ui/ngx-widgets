@@ -15,7 +15,6 @@ import { HomeModule } from './home/home.module';
 import { MarkdownExampleModule } from './markdown/examples/markdown-example.module';
 import { SlideOutExampleModule } from './slide-out-panel/examples/slide-out-example.module';
 import { TreeListExampleModule } from './treelist/examples/treelist-example.module';
-import { GitHubLinkExampleModule } from './github-link/examples/github-link-example.module';
 import {
   GitHubLinkAreaExampleModule
 } from './github-link-area/examples/github-link-area-example.module';
@@ -31,7 +30,6 @@ import {
     MarkdownExampleModule,
     SlideOutExampleModule,
     TreeListExampleModule,
-    GitHubLinkExampleModule,
     GitHubLinkAreaExampleModule
   ],
   declarations: [
