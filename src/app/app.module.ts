@@ -11,13 +11,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // Main areas
+import {
+  GitHubLinkAreaExampleModule
+} from './github-link-area/examples/github-link-area-example.module';
 import { HomeModule } from './home/home.module';
 import { MarkdownExampleModule } from './markdown/examples/markdown-example.module';
 import { SlideOutExampleModule } from './slide-out-panel/examples/slide-out-example.module';
 import { TreeListExampleModule } from './treelist/examples/treelist-example.module';
-import {
-  GitHubLinkAreaExampleModule
-} from './github-link-area/examples/github-link-area-example.module';
 
 @NgModule({
   imports: [
@@ -25,12 +25,12 @@ import {
     BrowserAnimationsModule,
     BrowserModule,
     FormsModule,
-    HomeModule,
     HttpModule,
+    GitHubLinkAreaExampleModule,
+    HomeModule,
     MarkdownExampleModule,
     SlideOutExampleModule,
     TreeListExampleModule,
-    GitHubLinkAreaExampleModule
   ],
   declarations: [
     AppComponent

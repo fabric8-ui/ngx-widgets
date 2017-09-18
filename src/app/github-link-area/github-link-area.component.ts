@@ -56,7 +56,7 @@ export class GitHubLinkAreaComponent implements OnChanges {
     this.content = this.content.split(linkData.match).join(
       // tslint:disable-next-line:max-line-length
       (linkData.state === 'open' ? '<span class="fa fa-clock-o gh-link-open" tooltip="Issue Open"></span>' : '') +
-      (linkData.state === 'closed' ? '<span class="fa fa-check gh-link-closed tooltip="Issue Closed""></span>' : '') +
+      (linkData.state === 'closed' ? '<span class="fa fa-check gh-link-closed" tooltip="Issue Closed"></span>' : '') +
       ((linkData.state !== 'open' && linkData.state !== 'closed') ?
       // tslint:disable-next-line:max-line-length
       '<span class="fa pficon-warning-triangle-o gh-link-error" tooltip="Issue State Unknown"></span>' : '')
