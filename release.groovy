@@ -2,6 +2,11 @@
 def ci (){
     stage('build'){
         sh 'npm install'
+        try{
+            sh 'npm run build'
+        } catch (err){
+            echo "${err}"
+        }
     }
     stage('unit test'){
         sh './run_unit_tests.sh'
@@ -18,7 +23,11 @@ def cd (b){
 
     stage('build'){
         sh 'npm install'
-        sh 'npm run build'
+        try{
+            sh 'npm run build'
+        } catch (err){
+            echo "${err}"
+        }
     }
 
     stage('unit test'){
