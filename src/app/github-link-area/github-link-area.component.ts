@@ -84,7 +84,7 @@ export class GitHubLinkAreaComponent implements OnChanges {
         .join('<a class="gh-link" href="https://github.com/' +
           result[1] + '/' +
           result[2] + '/' +
-          'issues/' + result[3] + '" rel="nofollow">' +
+          'issues/' + result[3] + '" rel="nofollow" target="_blank">' +
           '<span class="fa fa-github gh-link-system"></span><span class="gh-link-label"> ' +
           result[2] + ':' + result[3] + ' ' +
           '<span ' +
