@@ -9,13 +9,15 @@
   width: 100%;
   background-color: @color-pf-black-200;
   .editor {
+    word-wrap: break-word;
     .editor-markdown {
       font-size: 1.071em;
         margin: 0;
     }
     .editor-preview {
-      h1 {
+      h1, h2, h3, h4, h5, h6 {
         margin-top: 0;
+        line-height: 1.1;
       }
     }
     .placeholder {
