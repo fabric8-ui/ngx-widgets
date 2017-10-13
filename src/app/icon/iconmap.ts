@@ -1,15 +1,15 @@
 export const IconMap: any = {
-    'in progress'      : ['pficon', 'pficon-resources-almost-full'],
-    'new'              : ['fa', 'fa-arrow-down'],
-    'resolved'         : ['pficon', 'pficon-resources-full'],
-    'open'             : ['fa', 'fa-fire'],
-    'closed'           : ['fa', 'fa-remove'],
-    'userstory'        : ['fa', 'fa-bookmark'],
-    'valueproposition' : ['fa', 'fa-gift'],
-    'fundamental'      : ['fa', 'fa-bank'],
-    'experience'       : ['fa', 'fa-map'],
-    'feature'          : ['fa', 'fa-mouse-pointer'],
-    'bug'              : ['fa', 'fa-bug'],
-    'planneritem'      : ['fa', 'fa-paint-brush'],
-    'default'          : ['fa', 'fa-crosshairs'] // Never remove this line
+    'in progress'      : { icon : ['pficon', 'pficon-resources-almost-full'], color :  '#ec7a08' },
+    'new'              : { icon : ['fa', 'fa-arrow-down','color-purple'], color : '#582fc0' },
+    'resolved'         : { icon : ['pficon', 'pficon-resources-full'], color : '#3f9c35' },
+    'open'             : { icon : ['fa', 'fa-fire'], color : '#cc0000' },
+    'closed'           : { icon : ['fa', 'fa-remove'], color : '#72767b' },
+    'userstory'        : { icon : ['fa', 'fa-bookmark'], color : '#000000' },
+    'valueproposition' : { icon : ['fa', 'fa-gift'], color : '#000000' },
+    'fundamental'      : { icon : ['fa', 'fa-bank'], color : '#000000' },
+    'experience'       : { icon : ['fa', 'fa-map'], color : '#000000' },
+    'feature'          : { icon : ['fa', 'fa-mouse-pointer'], color : '#000000' },
+    'bug'              : { icon : ['fa', 'fa-bug'], color : '#000000' },
+    'planneritem'      : { icon : ['fa', 'fa-paint-brush'], color : '#000000' },
+    'default'          : { icon : ['fa', 'fa-crosshairs'], color : '#000000' } // Never remove this line
 };
