@@ -32,7 +32,7 @@ export class InfiniteScrollDirective implements OnInit {
     this.pageSize = Math.ceil(this.element.offsetHeight / this.eachElementHeightInPx);
     // Page should always have more elements than it can hold
     // Normally twice than threshold value
-    this.pageSize += this.fetchThreshold * 2;
+    this.pageSize += this.fetchThreshold;
     this.initContentItems();
   }
 
