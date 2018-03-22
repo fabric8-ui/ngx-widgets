@@ -24,8 +24,14 @@ import {
 export class MarkdownComponent implements OnChanges, OnInit, AfterViewChecked {
 
   @Input() fieldName: string = 'Description';
-  @Input('renderedText') inpRenderedText: string = '';
-  @Input('rawText') inpRawText: string = '';
+  @Input('renderedText') set inputRenderedText(renderedText: string) {
+      this.closeClick();
+      this.inpRenderedText = renderedText;
+  }
+  @Input('rawText') set inputRawText(rawText: string) {
+      this.closeClick();
+      this.inpRawText = rawText;
+  }
   @Input() rendering: boolean = false;
   @Input() saving: boolean = false;
   @Input() placeholder: string = 'This is place holder';
@@ -45,6 +51,8 @@ export class MarkdownComponent implements OnChanges, OnInit, AfterViewChecked {
   private tabBarVisible: boolean = true;
   private viewType: string = 'preview'; // markdown
   private editorActive: boolean = false;
+  private inpRenderedText = '';
+  private inpRawText = '';
   private renderedText = '';
   private rawText = '';
   private showMore = false;
