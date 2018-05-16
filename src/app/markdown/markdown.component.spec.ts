@@ -30,7 +30,7 @@ describe('Markdown component - ', () => {
       });
   }));
 
-  it('Should handle Markdown checkboxes correctly.', () => {
+  it('Should handle non-SafeValue rendered Markdown correctly (not accepting it).', () => {
       // tslint:disable-next-line:max-line-length
       comp.inpRawText = '# hello, markdown!\n* [ ] Item 1\n* [x] Item 2\n* [ ] Item 3';
       comp.inpRenderedText = '<h1>hello, markdown!\</h1><ul>' +
@@ -58,31 +58,15 @@ describe('Markdown component - ', () => {
       let markdownPreview: Element = fixture.debugElement.nativeElement.querySelector('.markdown-rendered');
       expect(markdownPreview).not.toBeNull();
       // preview render of the template default
+      // the input elements should have been stripped out at this time.
       let markdownCheckboxElementList = markdownPreview.querySelectorAll('.markdown-checkbox');
       expect(markdownCheckboxElementList).not.toBeNull();
-      expect(markdownCheckboxElementList.length).toBe(3);
-      expect(markdownCheckboxElementList[0].hasAttribute('checked')).toBeFalsy();
-      expect(markdownCheckboxElementList[1].hasAttribute('checked')).toBeTruthy();
-      expect(markdownCheckboxElementList[2].hasAttribute('checked')).toBeFalsy();
-      // tick a checkbox
-      let checkboxElem = markdownCheckboxElementList[0] as HTMLElement;
-      checkboxElem.click();
-      // see if it ends up in the Markdown
-      expect(comp.rawText.indexOf('[x] Item 1')).toBeGreaterThan(-1);
-      // tick another checkbox
-      checkboxElem = markdownCheckboxElementList[2] as HTMLElement;
-      checkboxElem.click();
-      // see if it ends up in the Markdown
-      expect(comp.rawText.indexOf('[x] Item 3')).toBeGreaterThan(-1);
-      // untick a checkbox
-      checkboxElem = markdownCheckboxElementList[1] as HTMLElement;
-      checkboxElem.click();
-      // see if it ends up in the Markdown
-      expect(comp.rawText.indexOf('[ ] Item 2')).toBeGreaterThan(-1);
+      expect(markdownCheckboxElementList.length).toBe(0);
+      // make sure the rest of the html is still available.
+      expect(comp.renderedText.indexOf('<h1>hello, markdown!</h1>')).toBeGreaterThan(-1);
     });
 
-
-    it('Should handle SafeValue arguments on rendered Markdown correctly.',
+    it('Should handle Markdown checkboxes correctly.',
         inject([DomSanitizer], (domSanitizer: DomSanitizer) => {
           // tslint:disable-next-line:max-line-length
           comp.inpRawText = '# hello, markdown!\n* [ ] Item 1\n* [x] Item 2\n* [ ] Item 3';
