@@ -26,7 +26,7 @@
     <div #editorBox #previewArea
       *ngIf="viewType==='preview' && ( renderedText.length || ( renderedText.changingThisBreaksApplicationSecurity && renderedText.changingThisBreaksApplicationSecurity.length ) )"
       class="editor-box editor-preview markdown-rendered">
-        <github-link-area [content]="inpRenderedText" (onInputEvent)="onInputEvent($event)"></github-link-area>
+        <github-link-area [content]="renderedText" (onInputEvent)="onInputEvent($event)"></github-link-area>
     </div>
     <div #editorBox
       *ngIf="viewType==='preview' && !renderedText.length && (!renderedText.changingThisBreaksApplicationSecurity || !renderedText.changingThisBreaksApplicationSecurity.length)"
