@@ -10,8 +10,6 @@ const markdown = new markdownIt();
   styleUrls: ['./markdown-example.component.less'],
   templateUrl: './markdown-example.component.html'
 })
-
-
 export class MarkdownExampleComponent {
 
     private renderedText: string = '<h1>hello, markdown!\</h1><ul>' +
@@ -24,6 +22,8 @@ export class MarkdownExampleComponent {
   private renderedTextNoEdit: string = '<p>Edit is not allowed here</p>';
   private rawText: string = '# hello, markdown!\n* [ ] Item 1\n* [x] Item 2\n* [ ] Item 3';
   private allowEdit = false;
+
+  constructor(private sanitizer: DomSanitizer) {}
 
   onSaveOrPreview(value: any) {
     const rawText = value.rawText;
@@ -59,7 +59,7 @@ export class MarkdownExampleComponent {
       }
       // tslint:disable-next-line:max-line-length
       console.log('MarkdownExampleComponent: Rendering on service side completed, sending to component: ' + text);
-      callBack(rawText, text);
+      callBack(rawText, this.sanitizer.bypassSecurityTrustHtml(text));
     }, 2000);
   }
 
