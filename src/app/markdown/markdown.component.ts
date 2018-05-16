@@ -23,7 +23,7 @@ import {
 export class MarkdownComponent implements OnChanges, OnInit, AfterViewChecked {
 
   @Input() fieldName: string = 'Description';
-  @Input('renderedText') inpRenderedText: string = '';
+  @Input('renderedText') inpRenderedText: any = '';
   @Input('rawText') inpRawText: string = '';
   @Input() rendering: boolean = false;
   @Input() saving: boolean = false;
@@ -42,7 +42,7 @@ export class MarkdownComponent implements OnChanges, OnInit, AfterViewChecked {
   boxHeight: number;
   enableShowMore: boolean = false;
   // these need to be public for the tests accessing them.
-  renderedText = '';
+  renderedText: any = '';
   rawText = '';
   private markdownViewExpanded: boolean = false;
   private tabBarVisible: boolean = true;

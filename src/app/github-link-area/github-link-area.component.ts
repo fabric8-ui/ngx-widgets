@@ -31,7 +31,7 @@ import { GitHubLinkService } from './github-link.service';
 })
 export class GitHubLinkAreaComponent implements OnChanges, AfterViewChecked {
 
-  @Input('content') content: string;
+  @Input('content') content: any;
   @Output('onInputEvent') onInputEvent = new EventEmitter();
 
   constructor(
