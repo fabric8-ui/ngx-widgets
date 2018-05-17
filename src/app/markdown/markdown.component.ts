@@ -15,6 +15,13 @@ import {
 import { Pipe, PipeTransform } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
 
+/**
+ * Implements a markdown component. Important: in order that the checkbox
+ * feature is working, the rendered content set using the attribute needs
+ * to be wrapped into a SafeValue instance. This prevents the sanitizer
+ * to strip the input fields needed for the checkboxes from the rendered
+ * html.
+ */
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'f8-markdown',
