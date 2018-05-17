@@ -30,42 +30,6 @@ describe('Markdown component - ', () => {
       });
   }));
 
-  it('Should handle non-SafeValue rendered Markdown correctly (not accepting it).', () => {
-      // tslint:disable-next-line:max-line-length
-      comp.inpRawText = '# hello, markdown!\n* [ ] Item 1\n* [x] Item 2\n* [ ] Item 3';
-      comp.inpRenderedText = '<h1>hello, markdown!\</h1><ul>' +
-      // tslint:disable-next-line:max-line-length
-      '<li><input class="markdown-checkbox" type="checkbox" data-checkbox-index="0"></input> Item 0</li>' +
-      // tslint:disable-next-line:max-line-length
-      '<li><input class="markdown-checkbox" type="checkbox" checked="" data-checkbox-index="1"></input> Item 1</li>' +
-      // tslint:disable-next-line:max-line-length
-      '<li><input class="markdown-checkbox" type="checkbox" data-checkbox-index="2"></input> Item 2</li></ul>';
-      // this first detectChanges() updates the component that one of the @Inputs has changed.
-      fixture.detectChanges();
-      // because of https://github.com/angular/angular/issues/9866, detectChanges() does not
-      // call ngOnChanges() on the component (yeah, it it as broken as it sounds). So
-      // we need to call the component manually to update.
-      comp.ngOnChanges({
-        inpRawText: {} as SimpleChange,
-        inpRenderedText: {} as SimpleChange
-      } as SimpleChanges);
-      // and because the test framework is not even able to detect inner changes to a component,
-      // we need to call detectChanges() again.
-      fixture.detectChanges();
-      // also, using query() is also not working. Maybe due to the dynamic update of innerHTML.
-      // So we need to use the nativeElement to get a selector working.
-      // tslint:disable-next-line:max-line-length
-      let markdownPreview: Element = fixture.debugElement.nativeElement.querySelector('.markdown-rendered');
-      expect(markdownPreview).not.toBeNull();
-      // preview render of the template default
-      // the input elements should have been stripped out at this time.
-      let markdownCheckboxElementList = markdownPreview.querySelectorAll('.markdown-checkbox');
-      expect(markdownCheckboxElementList).not.toBeNull();
-      expect(markdownCheckboxElementList.length).toBe(0);
-      // make sure the rest of the html is still available.
-      expect(comp.renderedText.indexOf('<h1>hello, markdown!</h1>')).toBeGreaterThan(-1);
-    });
-
     it('Should handle Markdown checkboxes correctly.',
         inject([DomSanitizer], (domSanitizer: DomSanitizer) => {
           // tslint:disable-next-line:max-line-length
