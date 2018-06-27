@@ -1,0 +1,32 @@
+<f8-card
+  [header]="cardHeader"
+  [body]="cardBody"
+  [footer]="cardFooter"
+  [config]="cardConfig">
+</f8-card>
+
+<ng-template #cardHeader>
+  <div class="card-header padding-5">
+    #2583:
+    <b>A development platform should be provide</b>
+    - <span class="creator">created by viraj</span>
+  </div>
+</ng-template>
+
+
+<ng-template #cardBody>
+  <div class="card-body padding-5">
+    <div class="sprint-name">Sprint 123</div>
+  </div>
+</ng-template>
+
+<ng-template #cardFooter>
+  <div class="card-footer padding-5">
+    <span class="label">team/analytics</span>
+    <span class="label">severity/P2</span>
+    <span class="label">kind/userstory</span>
+  </div>
+</ng-template>
+
+<div><b>Card Config</b></div>
+<span>{{ cardConfig | json }}</span>
