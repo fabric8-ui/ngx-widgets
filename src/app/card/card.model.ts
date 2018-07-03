@@ -75,7 +75,7 @@ export class CardConfig {
   margin?: string;
 }
 
-export let defaultCardConfig = {
+export const defaultCardConfig = {
   height: 'auto',
   width: '100%',
   cardColor: '#ffffff',

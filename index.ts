@@ -30,3 +30,7 @@ export { MarkdownModule } from './src/app/markdown/markdown.module';
 // Slide-out panel
 export { SlideOutPanelComponent } from './src/app/slide-out-panel/slide-out-panel.component';
 export { SlideOutPanelModule } from './src/app/slide-out-panel/slide-out-panel.module';
+
+// Card module
+export { CardComponent } from './src/app/card/card.component';
+export { CardModule } from './src/app/card/card.module';
