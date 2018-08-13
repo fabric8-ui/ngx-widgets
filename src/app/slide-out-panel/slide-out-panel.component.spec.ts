@@ -28,44 +28,51 @@ describe('Slide out component - ', () => {
         comp.itemName = 'name';
         comp.itemIcon = 'fa-calendar';
         comp.panelState = panelState;
-        fixture.detectChanges();
       });
   }));
 
-  it('should have a detail panel rendered', () => {
+  it('should have a detail panel rendered', async(() => {
     let elements = fixture.debugElement.queryAll(By.css('.detail-panel'));
-    expect(elements.length).toBe(1);
-  });
-
-  it('should have a header and icon', () => {
-    let detailId = fixture.debugElement.query(By.css('.detail-id'));
-    expect(detailId).not.toBeNull();
-    expect(detailId.nativeElement.textContent.trim().slice(0, 'Name'.length)).toBe('name');
-
-    let icon = fixture.debugElement.queryAll(By.css('.fa-calendar'));
-    expect(icon.length).toBe(1);
-  });
-
-  it('should update the drawer when clicked', function() {
-    let result = fixture.debugElement.query(By.css('.detail-close'));
-
-    expect(comp.panelState).toBe('in');
-    result.triggerEventHandler('click', {});
     fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      expect(elements.length).toBe(1);
+    });
+  }));
 
-    expect(comp.panelState).toBe('out');
-  });
+  it('should have a header and icon', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      let detailId = fixture.debugElement.query(By.css('.detail-id'));
+      expect(detailId).not.toBeNull();
+      expect(detailId.nativeElement.textContent.trim().slice(0, 'Name'.length)).toBe('name');
+      let icon = fixture.debugElement.queryAll(By.css('.fa-calendar'));
+      expect(icon.length).toBe(1);
+    });
+  }));
 
-  it ('should notify when the panel is closed', function(done) {
+  it('should update the drawer when clicked', async(() => {
+    fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      let result = fixture.debugElement.query(By.css('.detail-close'));
+      expect(comp.panelState).toBe('in');
+      result.triggerEventHandler('click', {});
+      fixture.detectChanges();
+    }).then(() => {
+      expect(comp.panelState).toBe('out');
+    });
+  }));
+
+  it ('should notify when the panel is closed', async(() => {
     comp.panelStateChange.subscribe((data: string) => {
       expect(data).toBe('out');
-      done();
     });
 
-    let result = fixture.debugElement.query(By.css('.detail-close'));
-
-    expect(comp.panelState).toBe('in');
-    result.triggerEventHandler('click', {});
     fixture.detectChanges();
-  });
+    fixture.whenStable().then(() => {
+      let result = fixture.debugElement.query(By.css('.detail-close'));
+      expect(comp.panelState).toBe('in');
+      result.triggerEventHandler('click', {});
+      fixture.detectChanges();
+    });
+  }));
 });
