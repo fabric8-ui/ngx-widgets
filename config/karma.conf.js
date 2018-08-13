@@ -3,7 +3,7 @@
  */
 
 module.exports = function(config) {
-  var testWebpackConfig = require('./webpack.test.js')({env: 'test'});
+  var testWebpackConfig = require('./webpack.test.js')();
 
   var configuration = {
 
@@ -17,6 +17,17 @@ module.exports = function(config) {
      */
     frameworks: ['jasmine'],
 
+    // plugins: [
+    //   require('karma-chrome-launcher'),
+    //   require('karma-coverage'),
+    //   require('karma-jasmine'),
+    //   require('karma-mocha'),
+    //   require('karma-mocha-reporter'),
+    //   require('karma-phantomjs-launcher'),
+    //   require('karma-remap-istanbul'),
+    //   require('karma-typescript')
+    // ],
+
     // list of files to exclude
     exclude: [ ],
 
@@ -26,7 +37,7 @@ module.exports = function(config) {
      * we are building the test environment in ./spec-bundle.js
      */
     files: [
-      { pattern: './src/assets/img/*', watched: false, included: false, served: true },
+      // { pattern: './src/assets/img/*', watched: false, included: false, served: true },
       { pattern: './config/spec-bundle.js', watched: false }
     ],
 
@@ -40,7 +51,10 @@ module.exports = function(config) {
     webpack: testWebpackConfig,
 
     coverageReporter: {
-      type: 'in-memory'
+      type: 'in-memory',
+      instrumenterOptions: {
+        istanbul: { noCompact: true }
+      }
     },
 
     remapCoverageReporter: {
@@ -78,19 +92,21 @@ module.exports = function(config) {
     /*
      * start these browsers
      * available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+     *
+     * See https://github.com/karma-runner/karma-chrome-launcher/issues/158#issuecomment-339265457
      */
-/*
-    browsers: [
-      'Chrome'
-    ],
+        browsers: [
+          'ChromeHeadlessNoSandbox'
+        ],
 
-    customLaunchers: {
-      ChromeTravisCi: {
-        base: 'Chrome',
-        flags: ['--no-sandbox']
-      }
-    },
-*/
+        customLaunchers: {
+          ChromeHeadlessNoSandbox: {
+            base: 'ChromeHeadless',
+            flags: ['--no-sandbox'],
+            debug: false
+          }
+        },
+/*
     browsers: ['PhantomJS_custom'],
     customLaunchers: {
       'PhantomJS_custom': {
@@ -110,7 +126,10 @@ module.exports = function(config) {
       // (useful if karma exits without killing phantom)
       exitOnResourceError: true
     },
-
+    if (process.env.TRAVIS){
+      configuration.browsers = ['ChromeTravisCi'];
+    }
+*/
     /*
      * Continuous Integration mode
      * if true, Karma captures browsers, runs the tests and exits
@@ -118,11 +137,6 @@ module.exports = function(config) {
     singleRun: true
   };
 
-  if (process.env.TRAVIS){
-    configuration.browsers = [
-      'ChromeTravisCi'
-    ];
-  }
 
   config.set(configuration);
 };

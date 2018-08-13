@@ -1,14 +1,14 @@
 import {
+  AfterViewChecked,
   Component,
+  ElementRef,
+  EventEmitter,
   Input,
-  ViewEncapsulation,
   OnChanges,
+  Output,
   SimpleChanges,
   ViewChild,
-  ElementRef,
-  AfterViewChecked,
-  Output,
-  EventEmitter
+  ViewEncapsulation
 } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { GitHubLinkService } from './github-link.service';
@@ -22,11 +22,7 @@ import { GitHubLinkService } from './github-link.service';
 @Component({
   encapsulation: ViewEncapsulation.None,
   selector: 'github-link-area',
-  styles: [ `
-    .gh-link-open { color: @color-pf-red; }
-    .gh-link-closed { color: @color-pf-green; }
-    .gh-link-error { color: @color-pf-orange; }
-    `],
+  styleUrls: [ './github-link-area.component.less'],
   templateUrl: './github-link-area.component.html'
 })
 export class GitHubLinkAreaComponent implements OnChanges, AfterViewChecked {
@@ -106,17 +102,19 @@ export class GitHubLinkAreaComponent implements OnChanges, AfterViewChecked {
   }
 
   wrapStringSafeValue(input: string | SafeHtml): SafeHtml {
-    if (typeof input === 'string')
+    if (typeof input === 'string') {
       return this.sanitizer.bypassSecurityTrustHtml(input);
-    else
+    } else {
       return input;
+    }
   }
 
   unwrapStringSafeValue(input: any): any {
-    if (typeof input === 'string')
+    if (typeof input === 'string') {
       return input;
-    else
+    } else {
       return input['changingThisBreaksApplicationSecurity'];
+    }
   }
 
   /*

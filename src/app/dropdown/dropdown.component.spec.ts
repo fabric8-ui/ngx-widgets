@@ -1,10 +1,7 @@
 import {
   async,
   ComponentFixture,
-  fakeAsync,
-  inject,
-  TestBed,
-  tick
+  TestBed
 } from '@angular/core/testing';
 
 import { DebugElement } from '@angular/core';
@@ -52,55 +49,54 @@ describe('Dropdown component - ', () => {
     } as DropdownOption;
   });
 
-  beforeEach(async(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [DropdownComponent]
-    })
-      .compileComponents()
-      .then(() => {
-        fixture = TestBed.createComponent(DropdownComponent);
-        comp = fixture.componentInstance;
-      });
-  }));
+    });
+    fixture = TestBed.createComponent(DropdownComponent);
+    comp = fixture.componentInstance;
+  });
 
-  it('Should toggle the dropdown on click', () => {
+  it('Should toggle the dropdown on click', async(() => {
     comp.options = options;
     comp.selected = slectedOption;
     fixture.detectChanges();
-    el = fixture.debugElement.query(By.css('.btn'));
+    fixture.whenStable().then(() => {
+      el = fixture.debugElement.query(By.css('.btn'));
+      // First click - should show the list
+      el.triggerEventHandler('click', {});
+      fixture.detectChanges();
+    }).then(() => {
+      let testEl = fixture.debugElement.query(By.css('ul'));
+      expect(testEl).not.toBeNull();
+      // Second click - should hide the list
+      el.triggerEventHandler('click', {});
+      fixture.detectChanges();
+    }).then(() => {
+      let testEl = fixture.debugElement.query(By.css('ul'));
+      expect(testEl).toBeNull();
+    });
+  }));
 
-    // First click - should show the list
-    el.triggerEventHandler('click', {});
-    fixture.detectChanges();
-    let testEl = fixture.debugElement.query(By.css('ul'));
-    expect(testEl).not.toBeNull();
-
-    // Seconf click - should hide the list
-    el.triggerEventHandler('click', {});
-    fixture.detectChanges();
-    testEl = fixture.debugElement.query(By.css('ul'));
-    expect(testEl).toBeNull();
-  });
-
-  it('Should trigger event on change with the correct selected option', (done) => {
+  it('Should trigger event on change with the correct selected option', async(() => {
     comp.onUpdate.subscribe((data: any) => {
       expect(data.newOption).toBe(options[1]);
-      done();
     });
 
     comp.options = options;
     comp.selected = slectedOption;
     fixture.detectChanges();
-    el = fixture.debugElement.query(By.css('.btn'));
-
-    // Click on the label to open the list
-    el.triggerEventHandler('click', {});
-    fixture.detectChanges();
-    let option2El = fixture.debugElement.query(By.css('.option2'));
-
-    // Click on an item from the list
-    option2El.triggerEventHandler('click', {});
-    fixture.detectChanges();
-  });
+    fixture.whenStable().then(() => {
+      el = fixture.debugElement.query(By.css('.btn'));
+      // Click on the label to open the list
+      el.triggerEventHandler('click', {});
+      fixture.detectChanges();
+    }).then(() => {
+      let option2El = fixture.debugElement.query(By.css('.option2'));
+      // Click on an item from the list
+      option2El.triggerEventHandler('click', {});
+      fixture.detectChanges();
+    });
+  }));
 });
