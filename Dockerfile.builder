@@ -23,7 +23,7 @@ RUN set -ex \
 #ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 8.3.0
 
-RUN yum install -y bzip2 git fontconfig \
+RUN yum install -y bzip2 git wget fontconfig \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz" \
   && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/SHASUMS256.txt.asc" \
   && gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc \
@@ -32,6 +32,10 @@ RUN yum install -y bzip2 git fontconfig \
   && rm "node-v$NODE_VERSION-linux-x64.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
   && yum clean all
+
+# Install latest chrome
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm && \
+  yum -y install google-chrome-stable_current_x86_64.rpm
 
 ENV FABRIC8_USER_NAME=fabric8
 
