@@ -7,6 +7,7 @@ import { SlideOutExampleComponent } from './slide-out-panel/examples/slide-out-e
 import {
   GitHubLinkAreaExampleComponent
 } from './github-link-area/examples/github-link-area-example.component';
+import { CardExampleComponent } from './card/examples/card-example.component';
 
 const routes: Routes = [{
     path: '',
@@ -24,6 +25,9 @@ const routes: Routes = [{
   }, {
     path: 'github-link-area',
     component: GitHubLinkAreaExampleComponent
+  }, {
+    path: 'card',
+    component: CardExampleComponent
   }];
 
 @NgModule({

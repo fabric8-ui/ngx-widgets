@@ -17,12 +17,14 @@ import {
 import { HomeModule } from './home/home.module';
 import { MarkdownExampleModule } from './markdown/examples/markdown-example.module';
 import { SlideOutExampleModule } from './slide-out-panel/examples/slide-out-example.module';
+import { CardExampleModule } from './card/examples/card-example.module';
 
 @NgModule({
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    CardExampleModule,
     FormsModule,
     HttpModule,
     GitHubLinkAreaExampleModule,

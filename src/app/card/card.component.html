@@ -1,0 +1,23 @@
+<div class="f8-card"
+  [style.height]="cardConfig.height"
+  [style.width]="cardConfig.width"
+  [style.background-color]="cardConfig.cardColor"
+  [style.box-shadow]="cardConfig.shadow ? cardConfig.shadowValue : null"
+  [style.border-radius]="cardConfig.borderRadius ? cardConfig.borderRadiusValue : null"
+  [style.border-width]="cardConfig.border ? cardConfig.borderWidth : null"
+  [style.border-style]="cardConfig.border ? cardConfig.borderStyle : null"
+  [style.border-color]="cardConfig.border ? cardConfig.borderColor : null"
+  [style.margin]="cardConfig.margin">
+  <div class="f8-card-header">
+    <ng-container *ngTemplateOutlet="header">
+    </ng-container>
+  </div>
+  <div class="f8-card-body">
+    <ng-container *ngTemplateOutlet="body">
+    </ng-container>
+  </div>
+  <div class="f8-card-footer">
+    <ng-container *ngTemplateOutlet="footer">
+    </ng-container>
+  </div>
+</div>
