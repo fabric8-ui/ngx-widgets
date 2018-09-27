@@ -56,7 +56,7 @@ export class MarkdownComponent implements OnChanges, OnInit, AfterViewChecked {
     const clickedInside = this.elementRef.nativeElement.contains(target);
 
     if (this.editorInput) {
-      this.isNoDataChanged = this.editorInput.nativeElement.innerText.trim() == this.rawText;
+      this.isNoDataChanged = this.editorInput.nativeElement.innerText.trim() === this.rawText;
     }
 
     if (!clickedInside) {
